@@ -12,7 +12,7 @@
         if (!VT.isArray(elms)) {
             return false;
         }
-        alert(VT.getEl('selects[name="task2"]'))
+        alert(VT.getEl('select[name="task2"]')[0])
         for (var i in elms) {
 
         }
@@ -41,6 +41,7 @@ function searchHome(homes, _id) {
     for (var i in homes) {
         if (homes[i]._id == _id) {
             result = homes[i];
+            break;
         }
     }
     return result;
