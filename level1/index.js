@@ -1,6 +1,5 @@
 (function () {
     function ready() {
-        var $ = VT;//addEl(parentEl, html, first)
         add_select([{val: "val44", title: "Созданный элемент1"}, {
             val: "val44f4",
             title: "Созданный элемент1"
@@ -12,21 +11,18 @@
         if (!VT.isArray(elms)) {
             return false;
         }
-        alert(VT.getEl('select[name="task2"]')[0])
-        for (var i in elms) {
+        var this_select = VT.getEl('select[name="task2"]');
 
-        }
-
-
+        return elms.map(function (value) {
+            VT.addEl(this_select,"<option value='"+value.val+"'>"+value.title+'</option>');
+        });
     }
 
     document.addEventListener("DOMContentLoaded", ready);
 })
 (window);
 
-function task2(t) {
-    alert("Вы выбрали меню списка: " + t.options[t.selectedIndex].innerHTML);
-}
+
 
 function getHomeNames(homes) {
     var result;
@@ -47,7 +43,12 @@ function searchHome(homes, _id) {
     return result;
 }
 
+function task2(t) {
+    alert("Вы выбрали меню списка: " + t.options[t.selectedIndex].innerHTML);
+}
+
 getHomeNames(test);
 searchHome(test, "58873bae28f4bf912185591b");
 searchHome(test, "58873bae28f4bf912185591bssd");
+
 
