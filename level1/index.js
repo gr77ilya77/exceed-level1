@@ -62,10 +62,6 @@ function task4() {
 
 }
 
-function save() {
-
-}
-
 var MENU = function (data) {
     this.data = data;
     this.edit = VT.getEl("#edit");
@@ -78,7 +74,6 @@ MENU.prototype.get_obj_selected = function () {
     return {value: selected.value, title: selected.innerHTML};
 };
 MENU.prototype.change_menu = function () {
-    //alert(MENU.prototype.get_obj_selected)
     var selected = MENU.prototype.get_obj_selected();
     this.edit.dataset.val = selected.value;
     this.edit.value = selected.title;
@@ -110,13 +105,13 @@ MENU.prototype.load_menu = function () {
     var options = this.data.map(function (value) {
         return {val: value._id, title: value.homeName};
     });
-    this.select.innerHTML='';
+    this.select.innerHTML = '';
     this.add_select(options);
 };
 
 MENU.prototype.save = function () {
     var home = this.searchHome(this.edit.dataset.val);
-    if(home==-1){
+    if (home == -1) {
         return false;
     }
     home.homeName = this.edit.value;
