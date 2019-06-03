@@ -461,3 +461,7 @@
 
 
 })(window);
+function task2(t) {
+    alert("Вы выбрали меню списка: "+t.options[t.selectedIndex].innerHTML);
+
+}
