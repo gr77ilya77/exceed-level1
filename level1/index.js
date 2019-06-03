@@ -2,11 +2,12 @@
     function ready() {
         task3();
         task4();
+        task5();
     }
+
     document.addEventListener("DOMContentLoaded", ready);
 })
 (window);
-
 
 
 function getHomeNames(homes) {
@@ -35,14 +36,13 @@ function add_select(elms) {
     var this_select = VT.getEl('select[name="task2"]');
 
     return elms.map(function (value) {
-        VT.addEl(this_select,"<option value='"+value.val+"'>"+value.title+'</option>');
+        VT.addEl(this_select, "<option value='" + value.val + "'>" + value.title + '</option>');
     });
 }
 
 function task2(t) {
     alert("Вы выбрали меню списка: " + t.options[t.selectedIndex].innerHTML);
 }
-
 
 
 function task3() {
@@ -54,11 +54,88 @@ function task3() {
 
 function task4() {
     var this_select = VT.getEl('select[name="task2"]');
-    this_select.innerHTML='';
+    this_select.innerHTML = '';
     var options = test.map(function (value) {
         return {val: value._id, title: value.homeName};
     });
     return add_select(options);
+
+}
+
+function save() {
+
+}
+
+var MENU = function (data) {
+    this.data = data;
+    this.edit = VT.getEl("#edit");
+    this.select = VT.getEl('select[name="task2"]');
+    this.btnsave = VT.getEl('button[data-type="save"]')
+};
+MENU.prototype.get_obj_selected = function () {
+    var this_select = VT.getEl('select[name="task2"]'),
+        selected = this_select.options[this_select.selectedIndex];
+    return {value: selected.value, title: selected.innerHTML};
+};
+MENU.prototype.change_menu = function () {
+    //alert(MENU.prototype.get_obj_selected)
+    var selected = MENU.prototype.get_obj_selected();
+    this.edit.dataset.val = selected.value;
+    this.edit.value = selected.title;
+};
+
+
+MENU.prototype.searchHome = function (_id) {
+    var result = -1;
+    for (var i in this.data) {
+        if (this.data[i]._id == _id) {
+            result = this.data[i];
+            break;
+        }
+    }
+    return result;
+};
+
+MENU.prototype.add_select = function (elms) {
+    var _this = this;
+    if (!VT.isArray(elms)) {
+        return false;
+    }
+    return elms.map(function (value) {
+        VT.addEl(_this.select, "<option value='" + value.val + "'>" + value.title + '</option>');
+    });
+};
+
+MENU.prototype.load_menu = function () {
+    var options = this.data.map(function (value) {
+        return {val: value._id, title: value.homeName};
+    });
+    this.select.innerHTML='';
+    this.add_select(options);
+};
+
+MENU.prototype.save = function () {
+    var home = this.searchHome(this.edit.dataset.val);
+    if(home==-1){
+        return false;
+    }
+    home.homeName = this.edit.value;
+    this.load_menu();
+    this.select.value = this.edit.dataset.val;
+
+    this.change_menu();
+    //VT.getEl('option[value="'+elem._id+'"]').click();
+};
+
+function task5() {
+    var my_menu = new MENU(test);
+    my_menu.select.onchange = function () {
+        my_menu.change_menu();
+    };
+    my_menu.change_menu();
+    my_menu.btnsave.onclick = function () {
+        my_menu.save();
+    };
 }
 
 getHomeNames(test);
