@@ -13,7 +13,7 @@
                     event.stopPropagation();
                 }
                 form.classList.add('was-validated');
-            }, false);
+            }, false); });
     }
 
     document.addEventListener("DOMContentLoaded", ready);
@@ -78,18 +78,24 @@ var MENU = function (data) {
     this.edit = VT.getEl("#edit");
     this.select = VT.getEl('select[name="task2"]');
     this.btnsave = VT.getEl('button[data-type="save"]')
+    console.log('JOJOJO');
+
 };
+
+Array.prototype.myFN = function(){};
+
 MENU.prototype.get_obj_selected = function () {
     var this_select = VT.getEl('select[name="task2"]'),
         selected = this_select.options[this_select.selectedIndex];
     return {value: selected.value, title: selected.innerHTML};
 };
+
 MENU.prototype.change_menu = function () {
+    console.warn('POPO', JSON.stringify(this.edit));
     var selected = MENU.prototype.get_obj_selected();
     this.edit.dataset.val = selected.value;
     this.edit.value = selected.title;
 };
-
 
 MENU.prototype.searchHome = function (_id) {
     var result = -1;
@@ -135,12 +141,26 @@ MENU.prototype.save = function () {
 
 function task5() {
     var my_menu = new MENU(test);
-    my_menu.select.onchange = function () {
-        my_menu.change_menu();
+    my_menu.select.addEventListener("change", my_menu.change_menu)
+
+    var re = /^\ *$/gm;
+
+    my_menu.edit.onkeyup = function (e) {
+        this.style.borderColor = 'black';
     };
     my_menu.change_menu();
     my_menu.btnsave.onclick = function () {
-        my_menu.save();
+        alert(re.test(my_menu.edit.value)+';'+my_menu.edit.value.length+';'+my_menu.edit.value);
+        alert(re.test(my_menu.edit.value)+';'+my_menu.edit.value.length+';'+my_menu.edit.value)
+        if(re.test(my_menu.edit.value)){
+            alert('ok')
+            my_menu.edit.style.borderColor = 'red';
+            return false;
+        } else {
+            my_menu.save();
+        }
+        alert(';;')
+
     };
 }
 

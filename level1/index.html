@@ -1,41 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script type="text/javascript" src="vanilla_tools.js"></script>
     <script type="text/javascript" src="data.js"></script>
     <script type="text/javascript" src="index.js"></script>
-    <link rel="stylesheet" href="css/bootstrap.css" />
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/dopstyle.css">
+    <!--<script type="text/javascript" src="js/bootstrap.min.js"></script>-->
     <title></title>
 </head>
 <body>
 
 <fieldset>
     <legend>Дома:</legend>
-    <div class="form-group" style="width: 250px;">
+    <div class="form-group" >
         <select name="task2" class="custom-select" required>
             <option value="val1">Выпадающее меню1</option>
             <option value="val2">Выпадающее меню2</option>
             <option value="val3">Выпадающее меню3</option>
             <option value="val4">Выпадающее меню4</option>
         </select>
-        <div class="invalid-feedback">Example invalid custom select feedback</div>
     </div>
 </fieldset>
 
 <fieldset class="form-inline"><legend>Изменение:</legend>
-    <form class="form-inline needs-validation" onsubmit="return false;">
-    <div class="form-group mx-sm-3 mb-2 " >
-        <input style="width: 250px;" type="text" id="edit" value="" class="form-control " required>
-        <div class="valid-feedback">
-            Looks good!
-        </div>
+    <div class="form-group " >
+        <input type="text" id="edit" value="" class="form-control " required>
+        <button data-type="save" class="btn btn-primary">Сохранить</button>
     </div>
 
-    <button data-type="save" class="btn btn-primary mb-2">Сохранить</button>
-    </form>
 </fieldset>
+
+
+
 
 </body>
 </html>
