@@ -141,32 +141,25 @@ MENU.prototype.save = function () {
 
 function task5() {
     var my_menu = new MENU(test);
-    my_menu.select.addEventListener("change", my_menu.change_menu)
-
-    var re = /^\ *$/gm;
-
+    my_menu.select.addEventListener("change", function () {my_menu.change_menu()})
     my_menu.edit.onkeyup = function (e) {
         this.style.borderColor = 'black';
     };
     my_menu.change_menu();
     my_menu.btnsave.onclick = function () {
-        alert(re.test(my_menu.edit.value)+';'+my_menu.edit.value.length+';'+my_menu.edit.value);
-        alert(re.test(my_menu.edit.value)+';'+my_menu.edit.value.length+';'+my_menu.edit.value)
-        if(re.test(my_menu.edit.value)){
-            alert('ok')
+        if(/^\s*$/.test(my_menu.edit.value)){
             my_menu.edit.style.borderColor = 'red';
             return false;
         } else {
             my_menu.save();
         }
-        alert(';;')
-
     };
 }
 
 getHomeNames(test);
 searchHome(test, "58873bae28f4bf912185591b");
 searchHome(test, "58873bae28f4bf912185591bssd");
+//https://exceed-solution.slack.com/messages/DK0U2T449/
 
 
 
