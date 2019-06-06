@@ -6,14 +6,15 @@
 
         var forms = document.getElementsByClassName('needs-validation');
         // Loop over them and prevent submission
-        var validation = Array.prototype.filter.call(forms, function(form) {
-            form.addEventListener('submit', function(event) {
+        var validation = Array.prototype.filter.call(forms, function (form) {
+            form.addEventListener('submit', function (event) {
                 if (form.checkValidity() === false) {
                     event.preventDefault();
                     event.stopPropagation();
                 }
                 form.classList.add('was-validated');
-            }, false); });
+            }, false);
+        });
     }
 
     document.addEventListener("DOMContentLoaded", ready);
@@ -78,11 +79,11 @@ var MENU = function (data) {
     this.edit = VT.getEl("#edit");
     this.select = VT.getEl('select[name="task2"]');
     this.btnsave = VT.getEl('button[data-type="save"]')
-    console.log('JOJOJO');
 
 };
 
-Array.prototype.myFN = function(){};
+Array.prototype.myFN = function () {
+};
 
 MENU.prototype.get_obj_selected = function () {
     var this_select = VT.getEl('select[name="task2"]'),
@@ -91,7 +92,6 @@ MENU.prototype.get_obj_selected = function () {
 };
 
 MENU.prototype.change_menu = function () {
-    console.warn('POPO', JSON.stringify(this.edit));
     var selected = MENU.prototype.get_obj_selected();
     this.edit.dataset.val = selected.value;
     this.edit.value = selected.title;
@@ -141,13 +141,15 @@ MENU.prototype.save = function () {
 
 function task5() {
     var my_menu = new MENU(test);
-    my_menu.select.addEventListener("change", function () {my_menu.change_menu()})
+    my_menu.select.addEventListener("change", function () {
+        my_menu.change_menu()
+    })
     my_menu.edit.onkeyup = function (e) {
         this.style.borderColor = 'black';
     };
     my_menu.change_menu();
     my_menu.btnsave.onclick = function () {
-        if(/^\s*$/.test(my_menu.edit.value)){
+        if (/^\s*$/.test(my_menu.edit.value)) {
             my_menu.edit.style.borderColor = 'red';
             return false;
         } else {
