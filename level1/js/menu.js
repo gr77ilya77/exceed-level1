@@ -8,6 +8,7 @@ var MENU = function (data) {
 };
 
 
+
 MENU.prototype.get_obj_selected = function () {
     var this_select = VT.getEl('select[name="task2"]'),
         selected = this_select.options[this_select.selectedIndex];
