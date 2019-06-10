@@ -1,34 +1,30 @@
 (function () {
     function ready() {
-        //my_select
+        var my_menu = new MENU(test,'my_select');
+        my_menu.create_menu();
 
-        var my_menu = new MENU(test);
-        my_menu.load_menu();
-        my_menu.select.addEventListener("change", function () {
-            my_menu.change_menu()
-        });
         my_menu.edit.onkeyup = function (e) {
-            this.style.borderColor = 'black';
-        };
-        my_menu.dropdown.onclick = function (e) {
-            my_menu.change_menu(e.target);
-        };
+             this.style.borderColor = 'black';
+         };
 
-        my_menu.btnsave.onclick = function () {
-            if (/^\s*$/.test(my_menu.edit.value)) {
-                my_menu.edit.style.borderColor = 'red';
+
+         my_menu.btnsave.onclick = function () {
+             if (/^\s*$/.test(my_menu.edit.value)) {
+                 my_menu.edit.style.borderColor = 'red';
                 return false;
             } else {
                 my_menu.save();
             }
         };
 
-        var this_select = VT.getEl('select[name="task2"]');
-        this_select.innerHTML = '';
-        var options = test.map(function (value) {
-            return {val: value._id, title: value.homeName};
-        });
-        my_menu.add_select(options);
+        // var this_select = VT.getEl('select[name="task2"]');
+        // this_select.innerHTML = '';
+        // var options = test.map(function (value) {
+        //     return {val: value._id, title: value.homeName};
+        // });
+        // my_menu.add_select(options);
+        //
+        // my_menu.add_select(options);
 
 
         var forms = document.getElementsByClassName('needs-validation');
@@ -43,10 +39,10 @@
             }, false);
         });
     }
-
     document.addEventListener("DOMContentLoaded", ready);
 })
 (window);
+
 //https://exceed-solution.slack.com/messages/DK0U2T449/
 
 

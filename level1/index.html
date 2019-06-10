@@ -6,56 +6,41 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script type="text/javascript" src="vanilla_tools.js"></script>
     <script type="text/javascript" src="data.js"></script>
-    <script type="text/javascript" src="myselect.js"></script>
-    <script type="text/javascript" src="main.js"></script>
 
+    <script type="text/javascript" src="js/db.js"></script>
+    <script type="text/javascript" src="js/menu.js"></script>
+    <script type="text/javascript" src="main.js"></script>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/dopstyle.css">
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <title></title>
 </head>
 <body>
+<h3> Дома: </h3>
+<div class="btn-group col-lg-4 col-sm-4 col-md-4 col-xl-4" id="my_select">
+    <button type="button" class="btn  dropdown-toggle btn-lg btn-block" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span data-type="value">Выберите дом</span></span>
+        <span class="caret" style="float: right; margin-top: 10px;"></span>
+    </button>
+    <ul class="dropdown-menu" style="margin-left: 5%; width: 90%;">
+        <li><a href="#" data-value="">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+        <li><a href="#">Separated link</a></li>
+    </ul>
+</div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
 
-<fieldset>
-    <legend>Дома:</legend>
-    <div class="form-group" id="my_select">
-        <select name="task2" class="custom-select" required>
-            <option value="val1">Выпадающее меню1</option>
-            <option value="val2">Выпадающее меню2</option>
-            <option value="val3">Выпадающее меню3</option>
-            <option value="val4">Выпадающее меню4</option>
-        </select>
-    </div>
-
-    <div class="btn-group">
-        <button type="button" class="btn  dropdown-toggle btn-lg btn-block" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span data-type="value">Выберите дом</span></span><span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu">
-            <li><a href="#" data-value="">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li><a href="#">Separated link</a></li>
-        </ul>
-    </div>
-
-</fieldset>
-
-<fieldset class="form-inline"><legend>Изменение:</legend>
-    <div class="col-lg-6">
+<h3> Изменение: </h3>
+    <div class="col-lg-6 col-sm-6 col-md-6 col-xl-6">
         <div class="input-group">
-            <input type="text" class="form-control" id="edit" placeholder="Search for..." required>
+            <input type="text" class="form-control" id="edit" placeholder="Редактирование" required>
             <span class="input-group-btn">
         <button data-type="save" class="btn btn-default" type="button">Сохранить</button>
       </span>
         </div><!-- /input-group -->
     </div><!-- /.col-lg-6 -->
-
-
-</fieldset>
-
-
-
 
 </body>
 </html>
